@@ -1,6 +1,7 @@
 <script>
  
   import { onMount } from 'svelte';
+  import Header from './lib/components/Header.svelte';
   import ProductGrid from './lib/components/ProductGrid.svelte'
   import ProductDetail from './lib/components/ProductDetail.svelte';
   import FilterSort from './lib/components/FilterSort.svelte';

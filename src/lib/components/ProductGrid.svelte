@@ -18,16 +18,27 @@
     function selectProduct(product) {
       dispatch('selectProduct', product);
     }
+
+    function handleKeydown(event, product) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      selectProduct(product);
+    }
+}
   </script>
   
   <div class="product-grid">
     {#each filteredProducts as product (product.id)}
-      <div class="product-card" on:click={() => selectProduct(product)}>
+    <button
+      class="product-card" 
+      on:click={() => selectProduct(product)}
+      on:keydown={(event)=>handleKeydown(event,product)}
+      >
         <img src={product.image} alt={product.title} />
         <h3>{product.title}</h3>
         <p>${product.price.toFixed(2)}</p>
         <p>{product.category}</p>
-      </div>
+    </button>
     {/each}
   </div>
   

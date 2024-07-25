@@ -7,5 +7,5 @@
 </style>
 
 <template>
-    <!-- HTML structure goes here -->
+   <h1>E-commerce Store</h1>
 </template>
