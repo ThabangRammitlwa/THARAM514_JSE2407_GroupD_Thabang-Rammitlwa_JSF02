@@ -24,6 +24,8 @@
     .product-detail {
         max-width:600;
         margin: 0 auto;
+
+      
         }
 
         img{

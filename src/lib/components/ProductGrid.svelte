@@ -53,6 +53,7 @@
       border: 1px solid #ddd;
       padding: 10px;
       cursor: pointer;
+      
     }
   
     .product-card img {

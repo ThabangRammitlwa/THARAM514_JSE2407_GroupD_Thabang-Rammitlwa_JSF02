@@ -43,6 +43,7 @@
     activeSort = sort;
   }
 </script>
+<Header title="Fashion Stop" />
 
 <main>
  {#if loading}
@@ -65,3 +66,8 @@
  />
 {/if}
 </main>
+<style>
+  main{
+    padding: 20px;
+  }
+</style>
