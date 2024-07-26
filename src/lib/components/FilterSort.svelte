@@ -108,7 +108,7 @@
   @media (max-width: 768px) {
     .filter-sort {
       flex-direction: column;
-      align-items: stretch;
+      align-items: center;
     }
 
     .select-wrapper, button {
