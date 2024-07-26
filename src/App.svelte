@@ -42,8 +42,14 @@
     activeCategory = category;
     activeSort = sort;
   }
+
+  function handleSearch(event) {
+    const searchTerm = event.detail;
+    console.log('Search term:', searchTerm);
+
+  }
 </script>
-<Header title="Fashion Stop" />
+<Header on:search={handleSearch} />
 
 <main>
  {#if loading}
@@ -67,7 +73,13 @@
 {/if}
 </main>
 <style>
-  main{
-    padding: 20px;
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  main {
+    width: 100%;
   }
 </style>

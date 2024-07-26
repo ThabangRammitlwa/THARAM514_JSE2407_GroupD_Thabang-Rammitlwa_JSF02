@@ -6,7 +6,7 @@
     const dispatch = createEventDispatcher();
 
     function goBack(){
-        dispatch('back');
+        dispatch('goback');
     }
 </script>
 
@@ -26,7 +26,7 @@
         margin: 0 auto;
 
       
-        }
+        } 
 
         img{
             max-width:100%;
