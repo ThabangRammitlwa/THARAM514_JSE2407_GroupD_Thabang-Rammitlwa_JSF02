@@ -13,11 +13,11 @@
   <header>
     <div class="header-top">
         <div class="header-content">
-          <a href="/" class="logo">Svelte Shop</a>
+          <a href="/" class="logo">AllInOne</a>
           <div class="search-bar">
             <input 
               type="text" 
-              placeholder="Search for products, brands..." 
+              placeholder="Search for products" 
               bind:value={searchTerm}
             />
             <button on:click={handleSearch}>

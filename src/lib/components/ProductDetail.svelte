@@ -38,11 +38,18 @@
       max-width: 600px;
       margin: 0 auto;
       
+      
     }
   
     img {
       max-width: 100%;
       height: 300px;
       object-fit: contain;
+    }
+
+    p{
+        margin-bottom: 1rem;
+        text-align: center;
+
     }
   </style>

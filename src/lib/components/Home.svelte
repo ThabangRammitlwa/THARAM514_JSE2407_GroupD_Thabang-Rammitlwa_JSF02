@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import ProductGrid from './ProductGrid.svelte';
     import FilterSort from './FilterSort.svelte';
+
   
     let products = [];
     let categories = [];
