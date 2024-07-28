@@ -1,15 +1,14 @@
 <script>
     import { navigate } from "svelte-routing";
+  import { activeCategory,activeSort } from "../../store";
 
     export let products = [];
-    export let activeCategory = 'all';
-    export let activeSort = 'default';
   
     $: filteredProducts = products
-      .filter(product => activeCategory === 'all' || product.category === activeCategory)
+      .filter(product => $activeCategory === 'all' || product.category === $activeCategory)
       .sort((a, b) => {
-        if (activeSort === 'lowest') return a.price - b.price;
-        if (activeSort === 'highest') return b.price - a.price;
+        if ($activeSort === 'lowest') return a.price - b.price;
+        if ($activeSort === 'highest') return b.price - a.price;
         return 0;
       });
 
@@ -62,6 +61,7 @@
         max-width: 100%;
         height: 200px;
         object-fit: contain;
+        margin-top: 20px;
     }
 
     p{

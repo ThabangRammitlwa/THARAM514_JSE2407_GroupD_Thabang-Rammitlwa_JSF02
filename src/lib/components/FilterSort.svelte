@@ -1,30 +1,30 @@
 <script>
     import { createEventDispatcher } from "svelte";
+  import { activeCategory, activeSort } from "../../store";
 
     export let categories = [];
-
-
-    let selectedCategory = 'all';
-    let selectedSort ='default';
 
 
     const dispatch = createEventDispatcher();
 
     function applyFilterSort(){
-        dispatch('filterSort',{category:selectedCategory,sort:selectedSort});
+        dispatch('filterSort',{category: $activeCategory,sort: $activeSort});
 
     }
+    function resetFilters() {
+        activeCategory.set('all');
+        activeSort.set('default');
+        applyFilterSort();
+    }
 
-    function resetFilters(){
-        selectedCategory ='all';
-        selectedSort='default';
+    $: {
         applyFilterSort();
     }
 </script>
 
 <div class="filter-sort">
     <div class ="select-wrapper">
-<select bind:value={selectedCategory} on:change={applyFilterSort}>
+<select bind:value={$activeCategory}>
     <option value="all">All categories</option>
     {#each categories as category}
     <option value={category}>{category}</option>
@@ -33,7 +33,7 @@
 </div>
 
 <div class="select-wrapper">
-    <select bind:value={selectedSort} on:change={applyFilterSort}>
+    <select bind:value={$activeSort}>
         <option value="default">Default sorting</option>
         <option value="lowest">Lowest Price</option>
         <option value="highest">Highest Price</option>

@@ -2,13 +2,14 @@
     import { onMount } from 'svelte';
     import ProductGrid from './ProductGrid.svelte';
     import FilterSort from './FilterSort.svelte';
+  import { activeCategory, activeSort } from '../../store';
+    
 
   
     let products = [];
     let categories = [];
     let loading = true;
-    let activeCategory = 'all';
-    let activeSort = 'default';
+   
   
     onMount(async () => {
       await fetchProducts();
@@ -26,11 +27,6 @@
       categories = await response.json();
     }
   
-    function handleFilterSort(event) {
-      const { category, sort } = event.detail;
-      activeCategory = category;
-      activeSort = sort;
-    }
   </script>
   
   {#if loading}
@@ -38,11 +34,9 @@
   {:else}
     <FilterSort 
       {categories} 
-      on:filterSort={handleFilterSort}
     />
     <ProductGrid 
       {products} 
-      {activeCategory} 
-      {activeSort}
+     
     />
   {/if}
