@@ -1,44 +1,53 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
-  
-    const dispatch = createEventDispatcher();
-  
-    let searchTerm = '';
-  
-    function handleSearch() {
-      dispatch('search', searchTerm);
-    }
-  </script>
-  
-  <header>
-    <div class="header-top">
-        <div class="header-content">
-          <a href="/" class="logo">AllInOne</a>
-          <div class="search-bar">
-            <input 
-              type="text" 
-              placeholder="Search for products" 
-              bind:value={searchTerm}
-            />
-            <button on:click={handleSearch}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z"/>
-              </svg>
-            </button>
-          </div>
-          <nav class="user-nav">
-            <a href="/account">My Account</a>
-            <a href="/cart">Cart</a>
-          </nav>
-        </div>
+  // Importing the createEventDispatcher function from Svelte
+  import { createEventDispatcher } from 'svelte';
+
+  /**
+   * @description Creates an event dispatcher to send custom events.
+   */
+  const dispatch = createEventDispatcher();
+
+  /**
+   * @type {string}
+   * @description The search term entered by the user.
+   */
+  let searchTerm = '';
+
+  /**
+   * @description Dispatches a custom event 'search' with the current search term.
+   */
+  function handleSearch() {
+    dispatch('search', searchTerm);
+  }
+</script>
+
+<!-- HTML structure for the header -->
+<header>
+  <div class="header-top">
+    <div class="header-content">
+      <a href="/" class="logo">AllInOne</a>
+      <div class="search-bar">
+        <input 
+          type="text" 
+          placeholder="Search for products" 
+          bind:value={searchTerm}
+        />
+        <button on:click={handleSearch}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z"/>
+          </svg>
+        </button>
       </div>
+      <nav class="user-nav">
+        <a href="/account">My Account</a>
+        <a href="/cart">Cart</a>
+      </nav>
+    </div>
+  </div>
+</header>
 
-
-
-  </header>
-  
-  <style>
-      header {
+<style>
+  header {
     background-color: #043655;
     color: white;
     width: 100%;
@@ -94,5 +103,4 @@
     border-radius: 0 4px 4px 0;
     cursor: pointer;
   }
-
-  </style>
+</style>

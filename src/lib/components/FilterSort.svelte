@@ -1,61 +1,73 @@
 <script>
-    import { createEventDispatcher } from "svelte";
+  // Importing necessary functions and stores
+  import { createEventDispatcher } from "svelte";
   import { activeCategory, activeSort } from "../../store";
 
-    export let categories = [];
+  /**
+   * @type {Array<string>}
+   * @description An array of product categories passed as a prop.
+   */
+  export let categories = [];
 
+  /**
+   * @description Creates an event dispatcher to send custom events.
+   */
+  const dispatch = createEventDispatcher();
 
-    const dispatch = createEventDispatcher();
+  /**
+   * @description Dispatches a custom event 'filterSort' with the current active category and sort values.
+   */
+  function applyFilterSort() {
+    dispatch('filterSort', { category: $activeCategory, sort: $activeSort });
+  }
 
-    function applyFilterSort(){
-        dispatch('filterSort',{category: $activeCategory,sort: $activeSort});
+  /**
+   * @description Resets the filters to their default values and applies the filter and sort.
+   */
+  function resetFilters() {
+    activeCategory.set('all');
+    activeSort.set('default');
+    applyFilterSort();
+  }
 
-    }
-    function resetFilters() {
-        activeCategory.set('all');
-        activeSort.set('default');
-        applyFilterSort();
-    }
-
-    $: {
-        applyFilterSort();
-    }
+  /**
+   * Reactive statement that calls applyFilterSort whenever the component's state changes.
+   */
+  $: {
+    applyFilterSort();
+  }
 </script>
 
+<!-- HTML structure for filter and sort UI -->
 <div class="filter-sort">
-    <div class ="select-wrapper">
-<select bind:value={$activeCategory}>
-    <option value="all">All categories</option>
-    {#each categories as category}
-    <option value={category}>{category}</option>
-    {/each}
-</select>
-</div>
-
-<div class="select-wrapper">
-    <select bind:value={$activeSort}>
-        <option value="default">Default sorting</option>
-        <option value="lowest">Lowest Price</option>
-        <option value="highest">Highest Price</option>
+  <div class="select-wrapper">
+    <select bind:value={$activeCategory}>
+      <option value="all">All categories</option>
+      {#each categories as category}
+        <option value={category}>{category}</option>
+      {/each}
     </select>
+  </div>
+
+  <div class="select-wrapper">
+    <select bind:value={$activeSort}>
+      <option value="default">Default sorting</option>
+      <option value="lowest">Lowest Price</option>
+      <option value="highest">Highest Price</option>
+    </select>
+  </div>
+
+  <button on:click={resetFilters}>Reset Filter</button>
 </div>
-
-<button on:click={resetFilters}>Reset Filter</button>
-
-</div>
-
-
 
 <style>
-
-    .filter-sort{
+  .filter-sort {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
     margin-bottom: 10px;
     padding: 50px;
-
     border-radius: 4px;
   }
 
@@ -88,7 +100,6 @@
     border-color: #02273d;
   }
 
-
   button {
     background-color: #02283f;
     color: white;
@@ -114,6 +125,4 @@
       width: 100%;
     }
   }
-    
-    
 </style>
