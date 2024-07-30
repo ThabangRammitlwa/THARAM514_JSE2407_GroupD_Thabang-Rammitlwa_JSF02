@@ -5,7 +5,7 @@ This project is a fully-featured e-commerce store that leverages the power and s
 
 
 ## Usage
-Clone jthe repository
+Clone the repository
 Install dependencies
 Run development server
 Open your browser and navigate to http://localhost:5173
